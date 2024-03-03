@@ -4,8 +4,11 @@ import {
   FileTypeValidator,
   Get,
   MaxFileSizeValidator,
+  Param,
   ParseFilePipe,
   Post,
+  Req,
+  Res,
   UploadedFile,
   UploadedFiles,
   UseInterceptors,
@@ -13,6 +16,7 @@ import {
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { buffer } from 'stream/consumers';
 import { VideoService } from './video.service';
+import { Request, Response } from 'express';
 
 @Controller('video')
 export class VideoController {
@@ -32,5 +36,19 @@ export class VideoController {
     return {
       file: filename,
     };
+  }
+  @Post(':filename')
+  async getVideo(
+    @Param() {filename}:{filename: string},
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    try {
+      await this.videoService.streamVideo(filename, res, req);
+    } catch (e) {
+      return {
+        message: e.message,
+      };
+    }
   }
 }
