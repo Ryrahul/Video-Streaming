@@ -32,7 +32,6 @@ export class VideoService {
           'Content-Length': chunkSize,
           'Content-Type': 'video/mp4',
         };
-
         res.writeHead(206, head);
         video.pipe(res);
       } else {
