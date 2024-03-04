@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed on your machine:
 1. **Clone the Repository:** Clone this repository to your local machine using the following command:
 
    ```
-   git clone git@github.com:Ryrahul/Video-Streaming.git
+   git clone [git@github.com:Ryrahul/Video-Streaming.git](https://github.com/Ryrahul/Video-Streaming.git)
    ```
 
 2. **Navigate to the Directory:** Enter the directory of the cloned repository:
